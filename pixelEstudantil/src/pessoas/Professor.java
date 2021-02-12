@@ -24,4 +24,5 @@ public class Professor extends Pessoa {
         return  "Matricula = "+this.id+
                 super.imprimirPessoa();
     }
+
 }

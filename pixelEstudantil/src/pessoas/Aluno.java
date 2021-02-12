@@ -1,4 +1,5 @@
 package pessoas;
+
 /**
  *
  * @author Raimundo
@@ -8,6 +9,7 @@ public class Aluno extends Pessoa{
     private static int gerarCodigo;
     private int codigo;
     private String id = "AL";
+    private float pontuacao;
     
     public Aluno(String nome, String email, String senha){
         super(nome, email, senha);
@@ -19,9 +21,19 @@ public class Aluno extends Pessoa{
         return this.id;
     }
     
+    public void setPontuacao(float p) {
+    	this.pontuacao = p;
+    }
+    
+    public float getPontuacao() {
+    	return this.pontuacao;
+    }
+    
     @Override
     public String toString(){
         return  "Matricula = "+this.id+
-                super.imprimirPessoa();
+                super.imprimirPessoa()+
+                ", Pontuação: "+this.pontuacao;
     }
+
 }

@@ -51,16 +51,16 @@ public class TelaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 900, 200);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel panelSuperior = new JPanel();
+		panelSuperior.setBounds(0, 0, 900, 200);
+		contentPane.add(panelSuperior);
+		panelSuperior.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(Color.WHITE);
 		menuBar.setBackground(Color.BLACK);
 		menuBar.setBounds(0, 5, 900, 21);
-		panel.add(menuBar);
+		panelSuperior.add(menuBar);
 		
 		JMenu mnEstudante = new JMenu("Estudante");
 		mnEstudante.setForeground(Color.WHITE);
@@ -137,6 +137,10 @@ public class TelaPrincipal extends JFrame {
 		JLabel jlImagePanel = new JLabel("");
 		jlImagePanel.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/imagens/menu.jpg")));
 		jlImagePanel.setBounds(0, 0, 900, 200);
-		panel.add(jlImagePanel);
+		panelSuperior.add(jlImagePanel);
+		
+		JPanel panelInferior = new JPanel();
+		panelInferior.setBounds(5, 205, 450, 360);
+		contentPane.add(panelInferior);
 	}
 }

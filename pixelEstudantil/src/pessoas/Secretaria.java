@@ -2,7 +2,6 @@ package pessoas;
 
 import interfaces.Autenticavel;
 import disciplinas.Disciplina;
-import sistema.Sistema;
 
 /**
  *
@@ -16,13 +15,21 @@ public class Secretaria extends Funcionario implements Autenticavel{
     
     public Secretaria(String nome, String email, String senha){
         super(nome, email, senha);
-        this.codigo = gerarCodigo++;//com isso o id secretaria sera automatizado para todo secretaria criada.
+        this.codigo = gerarCodigo++;//com isso o id secretaria sera automatizado para toda secretaria criada.
         this.id += this.codigo;
     }
     
     public String getIdSecretaria(){
         return this.id;
     }
+    
+    @Override
+	public void criarProfessor(Professor p, String senha) {
+		if(autentica(senha) == true) {
+			
+		}
+		
+	}//Ultimo ponto de parada
     
     @Override
     public String toString(){
@@ -38,10 +45,5 @@ public class Secretaria extends Funcionario implements Autenticavel{
         return true;
     }
 
-    @Override
-    public Disciplina criarDisciplina(String nome, int codigo) {
-        Disciplina umaDisciplina = new Disciplina(nome, codigo);
-        return umaDisciplina;
-    }
 
 }

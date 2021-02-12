@@ -2,7 +2,6 @@ package pessoas;
 
 import disciplinas.Disciplina;
 import interfaces.Autenticavel;
-import sistema.Sistema;
 
 /**
  *
@@ -25,6 +24,12 @@ public class Diretoria extends Funcionario implements Autenticavel {
     }
     
     @Override
+	public void criarProfessor(Professor p, String senha) {
+		// TODO Auto-generated method stub
+		
+	}//Ultimo ponto de parada
+    
+    @Override
     public String toString(){
         return  "Matricula = "+this.id+
                 super.imprimirPessoa();
@@ -38,11 +43,5 @@ public class Diretoria extends Funcionario implements Autenticavel {
         return true;
     }
 
-    @Override
-    public Disciplina criarDisciplina(String nome, int codigo) {
-        Disciplina umaDisciplina = new Disciplina(nome, codigo);
-        return umaDisciplina;
-    }
-
-           
+         
 }

@@ -10,7 +10,7 @@ public class Arquivo {
 	//método para escrever no arquivo
 	public void gravarArquivo(String cadastro) {
 		try {
-			FileOutputStream arquivo = new FileOutputStream("/home/raimundo/workspace/pixelEstudantil/src/arquivos/Logs.txt",true);
+			FileOutputStream arquivo = new FileOutputStream("/home/raimundo/git/pixel_estudantil_eclipse/pixelEstudantil/src/arquivos/Logs.txt",true);
 			PrintWriter pr = new PrintWriter(arquivo);
 			
 			pr.println(cadastro);
@@ -27,7 +27,7 @@ public class Arquivo {
 	public void lerArquivo() {
 		try {
 			
-			FileInputStream arquivo = new FileInputStream("/home/raimundo/workspace/pixelEstudantil/src/arquivos/Logs.txt");
+			FileInputStream arquivo = new FileInputStream("/home/raimundo/git/pixel_estudantil_eclipse/pixelEstudantil/src/arquivos/Logs.txt");
 			InputStreamReader input = new InputStreamReader(arquivo);
 			BufferedReader br = new BufferedReader(input);
 			
@@ -56,7 +56,7 @@ public class Arquivo {
 	public boolean validarLogin(String usuario, String senha) {
 		boolean login = false;
 		try {
-			FileInputStream arquivo = new FileInputStream("/home/raimundo/workspace/pixelEstudantil/src/arquivos/Logs.txt");
+			FileInputStream arquivo = new FileInputStream("/home/raimundo/git/pixel_estudantil_eclipse/pixelEstudantil/src/arquivos/Logs.txt");
 			InputStreamReader input = new InputStreamReader(arquivo);
 			BufferedReader br = new BufferedReader(input);
 			
@@ -72,7 +72,7 @@ public class Arquivo {
 					}
 				}
 			} while (linha != null);
-			//br.close();
+			br.close();
 		}catch(Exception e) {
 			System.out.println("Usuário ou senha inválida");
 		}

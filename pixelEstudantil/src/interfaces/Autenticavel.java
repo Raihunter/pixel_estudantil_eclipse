@@ -10,5 +10,4 @@ public interface Autenticavel {
     
     public abstract boolean autentica(String senha);
     
-    public abstract Disciplina criarDisciplina(String nome, int codigo);
 }
