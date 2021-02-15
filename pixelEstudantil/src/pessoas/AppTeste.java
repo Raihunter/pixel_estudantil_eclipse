@@ -13,8 +13,8 @@ public class AppTeste {
     public static void main(String[] args) {
 
         Sistema sistema = new Sistema();
-        sistema.setNomeDoSistema("Pixel Estudantil");
-        sistema.setCnpj("123456");
+//        sistema.setNomeDoSistema("Pixel Estudantil");
+//        sistema.setCnpj("123456");
         
         System.out.println("\n############ Confirmações da criação das senhas ############\n");
 

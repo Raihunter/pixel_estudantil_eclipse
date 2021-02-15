@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import arquivos.Arquivo;
+import exceptions.PasswordException;
+import pessoas.Aluno;
+import pessoas.Pessoa;
+import sistema.Sistema;
 
 public class Cadastro extends JFrame {
 
@@ -26,6 +30,7 @@ public class Cadastro extends JFrame {
 	private JTextField tfEmailCadastro;
 	private JPasswordField tfSenhaCadastro;
 	private JPasswordField tfConfirmarSenhaCadastro;
+	Sistema sis = new Sistema();
 
 	/**
 	 * Launch the application.
@@ -110,15 +115,23 @@ public class Cadastro extends JFrame {
 					JOptionPane.showMessageDialog(null, "Confirmação de senha incorreta");
 					tfConfirmarSenhaCadastro.setText("");
 				}else {
-				
-					String usuario =	tfNomeCadastro.getText()+";"+
-										tfEmailCadastro.getText()+";"+
-										tfSenhaCadastro.getText();
-				
-					Arquivo gravarDados = new Arquivo();
-					gravarDados.gravarArquivo(usuario);
-				
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+					
+					Pessoa aluno = new Aluno(tfNomeCadastro.getText(), tfEmailCadastro.getText());
+					try {
+						aluno.setAuxPassword(tfSenhaCadastro.getText());
+						sis.setPessoas(aluno);
+						
+						String usuario =	tfNomeCadastro.getText()+";"+
+											tfEmailCadastro.getText()+";"+
+											tfSenhaCadastro.getText();
+					
+						Arquivo gravarDados = new Arquivo();
+						gravarDados.gravarArquivo(usuario);
+						
+						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+					} catch (PasswordException e1) {
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
 				
 					tfNomeCadastro.setText("");
 					tfEmailCadastro.setText("");

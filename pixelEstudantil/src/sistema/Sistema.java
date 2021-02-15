@@ -16,8 +16,8 @@ import disciplinas.Disciplina;
  */
 public class Sistema {
     
-    private String nomeDoSistema;
-    private String cnpj;
+//    private String nomeDoSistema;
+//    private String cnpj;
     private List<Pessoa> pessoas;
     private List<Aluno> alunos;
     private List<Disciplina> disciplinas;
@@ -28,21 +28,21 @@ public class Sistema {
         this.alunos = new ArrayList<>();
     }
 
-    public String getNomeDoSistema() {
-        return nomeDoSistema;
-    }
+//    public String getNomeDoSistema() {
+//        return nomeDoSistema;
+//    }
 
-    public void setNomeDoSistema(String nomeDoSistema) {
-        this.nomeDoSistema = nomeDoSistema;
-    }
+//    public void setNomeDoSistema(String nomeDoSistema) {
+//        this.nomeDoSistema = nomeDoSistema;
+//    }
 
-    public String getCnpj() {
-        return cnpj;
-    }
+//    public String getCnpj() {
+//        return cnpj;
+//    }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
+//    public void setCnpj(String cnpj) {
+//        this.cnpj = cnpj;
+//    }
     
     public void setPessoas(Pessoa p) {
         this.pessoas.add(p);

@@ -1,6 +1,7 @@
 package pessoas;
 
 import endereco.Endereco;
+import exceptions.PasswordException;
 
 /**
  *
@@ -19,6 +20,10 @@ public abstract class Pessoa implements Comparable<Pessoa> {
         this.nome = nome;
         this.email = email;
         this.setPassWord(senha);
+    }
+    public Pessoa(String nome, String email){
+        this.nome = nome;
+        this.email = email;
     }
    
     //Metódo para autenticar a senha criada
@@ -91,6 +96,12 @@ public abstract class Pessoa implements Comparable<Pessoa> {
         } else {
             System.out.println("Criação da senha inválida");
         }
+    }
+    //Teste de outro metodo setPassword
+    public void setAuxPassword(String senha) throws PasswordException {
+    	if(autenticaSenha(senha) == false)
+    		throw new PasswordException();
+    	this.password = senha;
     }
     
     public String getPassword(){

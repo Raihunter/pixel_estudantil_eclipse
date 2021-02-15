@@ -16,6 +16,11 @@ public class Aluno extends Pessoa{
         this.codigo = gerarCodigo++;//com isso o id aluno sera automatizado para todo aluno criado.
         this.id += this.codigo;
     }
+    public Aluno(String nome, String email){
+        super(nome, email);
+        this.codigo = gerarCodigo++;//com isso o id aluno sera automatizado para todo aluno criado.
+        this.id += this.codigo;
+    }
     
     public String getIdAluno(){
         return this.id;

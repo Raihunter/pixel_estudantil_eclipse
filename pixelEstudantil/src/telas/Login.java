@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
 
 import arquivos.Arquivo;
+import sistema.Sistema;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -38,6 +39,8 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Sistema sis = new Sistema();
+					
 					Login frame = new Login();
 					frame.setVisible(true);
 					frame.setSize(900, 600);
