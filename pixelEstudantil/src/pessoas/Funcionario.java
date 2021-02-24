@@ -10,6 +10,10 @@ public abstract class Funcionario extends Pessoa {
         super(nome, email, senha);
     }
     
-    public abstract void criarProfessor(Professor p, String senha);
+    public Funcionario(String nome, String email) {
+    	super(nome, email);
+    }
+    
+    public abstract void gravarProfessor(Professor professor);
 
 }

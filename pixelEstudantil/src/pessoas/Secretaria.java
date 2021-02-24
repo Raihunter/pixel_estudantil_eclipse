@@ -1,6 +1,8 @@
 package pessoas;
 
 import interfaces.Autenticavel;
+import interfaces.PessoaRepositorio;
+import dao.PessoaDAO;
 import disciplinas.Disciplina;
 
 /**
@@ -17,6 +19,14 @@ public class Secretaria extends Funcionario implements Autenticavel{
         super(nome, email, senha);
         this.codigo = gerarCodigo++;//com isso o id secretaria sera automatizado para toda secretaria criada.
         this.id += this.codigo;
+        super.setID(id);
+    }
+    
+    public Secretaria(String nome, String email){
+        super(nome, email);
+        this.codigo = gerarCodigo++;//com isso o id aluno sera automatizado para todo aluno criado.
+        this.id += this.codigo;
+        super.setID(id);
     }
     
     public String getIdSecretaria(){
@@ -24,12 +34,10 @@ public class Secretaria extends Funcionario implements Autenticavel{
     }
     
     @Override
-	public void criarProfessor(Professor p, String senha) {
-		if(autentica(senha) == true) {
-			
-		}
-		
-	}//Ultimo ponto de parada
+	public void gravarProfessor(Professor professor) {
+		PessoaRepositorio pessoa = new PessoaDAO();
+		pessoa.gravarPessoa(professor);
+	}
     
     @Override
     public String toString(){

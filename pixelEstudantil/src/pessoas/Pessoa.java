@@ -14,6 +14,7 @@ public abstract class Pessoa implements Comparable<Pessoa> {
     private String email;
     private String password;
     private int idade;
+    private String ID;
     Endereco endereco;
     
     public Pessoa(String nome, String email, String senha){
@@ -47,6 +48,14 @@ public abstract class Pessoa implements Comparable<Pessoa> {
             }
         }
         return achouNumero && achouMaiuscula && achouMinuscula && achouSimbolo;
+    }
+    
+    public void setID(String id) {
+    	this.ID = id;
+    }
+    
+    public String getID() {
+    	return this.ID;
     }
     
     public String getNome(){

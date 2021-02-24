@@ -45,7 +45,9 @@ public class conjunto {
         for(Pessoa al : aluno) {
         	System.out.println(al);
         }
-		
+        System.out.println("\n");
+        System.out.println(matematica.toString());
+        System.out.println(portugues.toString());
 	}
 
 }

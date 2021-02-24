@@ -36,11 +36,16 @@ public class Disciplina {
     
     public void setAluno(Aluno a) {
     	this.alunos.add(a);
+    	a.setDisciplina(this);
     }
-
+    
+    public String imprimirDisciplina() {
+    	return "Disciplina - " + "nome = " + nome + ", codigo = " + codigo.toUpperCase();
+    }
+    
     @Override
     public String toString() {
-        return "Disciplina - " + "nome = " + nome + ", codigo = " + codigo.toUpperCase();
+        return getNome();
     }
     
 }

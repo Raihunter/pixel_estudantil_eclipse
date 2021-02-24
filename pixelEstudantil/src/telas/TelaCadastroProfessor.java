@@ -2,6 +2,7 @@ package telas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,9 +24,11 @@ import exceptions.PasswordException;
 import interfaces.PessoaRepositorio;
 import pessoas.Aluno;
 import pessoas.Pessoa;
+import pessoas.Professor;
+import pessoas.Secretaria;
 import sistema.Sistema;
 
-public class Cadastro extends JFrame {
+public class TelaCadastroProfessor extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfNomeCadastro;
@@ -41,10 +44,11 @@ public class Cadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cadastro frame = new Cadastro();
+					TelaCadastroProfessor frame = new TelaCadastroProfessor();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 					frame.setSize(900, 600);
-					frame.setLocationRelativeTo(null);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,8 +59,8 @@ public class Cadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Cadastro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public TelaCadastroProfessor() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -70,13 +74,14 @@ public class Cadastro extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblCrieSuaConta = new JLabel("Crie sua conta do Píxel Estudantil");
-		lblCrieSuaConta.setBounds(30, 20, 237, 15);
-		panel.add(lblCrieSuaConta);
+		JLabel lblNovoProfessor = new JLabel("Novo Professor");
+		lblNovoProfessor.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblNovoProfessor.setBounds(85, 20, 237, 15);
+		panel.add(lblNovoProfessor);
 		
-		JLabel lblNomeUsuario = new JLabel("NOME DE USUARIO");
-		lblNomeUsuario.setBounds(45, 80, 140, 15);
-		panel.add(lblNomeUsuario);
+		JLabel lblNomeProfessor = new JLabel("NOME DO PROFESSOR");
+		lblNomeProfessor.setBounds(45, 80, 160, 15);
+		panel.add(lblNomeProfessor);
 		
 		tfNomeCadastro = new JTextField("");
 		tfNomeCadastro.setBounds(45, 100, 210, 25);
@@ -118,18 +123,16 @@ public class Cadastro extends JFrame {
 					tfConfirmarSenhaCadastro.setText("");
 				} else {
 					PessoaDAO PessoaDAO = new PessoaDAO();
-					Pessoa aluno = new Aluno(tfNomeCadastro.getText(), tfEmailCadastro.getText());
+					Pessoa sec = PessoaDAO.getPessoaLogada();
 					try {
-						aluno.setAuxPassword(tfSenhaCadastro.getText());
-						//sis.setPessoas(aluno);
-						PessoaDAO.gravarPessoa(aluno);
-//						String usuario =	tfNomeCadastro.getText()+";"+
-//											tfEmailCadastro.getText()+";"+
-//											tfSenhaCadastro.getText();
-					
-						//Arquivo gravarDados = new Arquivo();
-						//gravarDados.gravarArquivo(usuario);
-						JOptionPane.showMessageDialog(null, tfNomeCadastro.getText()+" cadastrado(a) com sucesso");
+						if(sec instanceof Secretaria) {
+							Professor professor = new Professor(tfNomeCadastro.getText(), tfEmailCadastro.getText());
+							professor.setAuxPassword(tfSenhaCadastro.getText());
+							((Secretaria) sec).gravarProfessor(professor);
+							JOptionPane.showMessageDialog(null, tfNomeCadastro.getText()+" cadastrado(a) com sucesso");
+						} else {
+							JOptionPane.showMessageDialog(null, "Autorização negada");
+						}
 					} catch (PasswordException e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage());
 					}

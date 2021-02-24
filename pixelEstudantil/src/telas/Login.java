@@ -21,6 +21,10 @@ import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
 
 import arquivos.Arquivo;
+import dao.PessoaDAO;
+import interfaces.PessoaRepositorio;
+import pessoas.Pessoa;
+import pessoas.Secretaria;
 import sistema.Sistema;
 
 import java.awt.event.ActionListener;
@@ -29,7 +33,7 @@ import java.awt.event.ActionEvent;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tfEmailLogin;
+	private JTextField tfUsuarioLogin;
 	private JPasswordField tfSenha;
 
 	/**
@@ -39,8 +43,10 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Sistema sis = new Sistema();
-					
+					//Sistema sis = new Sistema();
+					PessoaDAO pessoaDAO = new PessoaDAO();
+					Secretaria sec = new Secretaria("admin", "pixelEstudantil@gmail.com", "Admin.123");
+					pessoaDAO.gravarPessoa(sec);
 					Login frame = new Login();
 					frame.setVisible(true);
 					frame.setSize(900, 600);
@@ -142,10 +148,10 @@ public class Login extends JFrame {
 		jlSenhaLogin.setBounds(15, 150, 60, 15);
 		panelInputLogin.add(jlSenhaLogin);
 		
-		tfEmailLogin = new JTextField("");
-		tfEmailLogin.setBounds(15, 112, 210, 25);
-		panelInputLogin.add(tfEmailLogin);
-		tfEmailLogin.setColumns(10);
+		tfUsuarioLogin = new JTextField("");
+		tfUsuarioLogin.setBounds(15, 112, 210, 25);
+		panelInputLogin.add(tfUsuarioLogin);
+		tfUsuarioLogin.setColumns(10);
 		
 		tfSenha = new JPasswordField("");
 		tfSenha.setBounds(15, 170, 210, 25);
@@ -155,14 +161,17 @@ public class Login extends JFrame {
 		JButton btnEntrar = new JButton("ENTRAR");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Arquivo arq = new Arquivo();
-				if(arq.validarLogin(tfEmailLogin.getText(),tfSenha.getText()) == true) {
+				//Arquivo arq = new Arquivo();
+				PessoaDAO PessoaDAO = new PessoaDAO();
+				if(PessoaDAO.validarLogin(tfUsuarioLogin.getText(), tfSenha.getText()) == true) {
 					TelaPrincipal logado = new TelaPrincipal();
 					logado.setLocationRelativeTo(null);
 					logado.setVisible(true);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuário ou senha incorreta");
+					tfUsuarioLogin.setText("");
+					tfSenha.setText("");
 				}
 			}
 		});

@@ -1,3 +1,5 @@
 admin;pixelEstudantil@hotmail.com;admin
 raimundo;hilaryon@gmail.com;123
 maria;maira@hotmail.com;456
+raimundo;hi@gmail.com;R2016soJ.
+Raimundo;hilaryoncx@gmail.com;R2016soJ.
