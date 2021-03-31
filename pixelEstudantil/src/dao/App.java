@@ -1,8 +1,8 @@
 package dao;
 
 import interfaces.PessoaRepositorio;
-import pessoas.Aluno;
-import pessoas.Pessoa;
+import model.Aluno;
+import model.Pessoa;
 
 public class App {
 
@@ -14,7 +14,7 @@ public class App {
         pessoaRepositorio.gravarPessoa(pessoa1);
         pessoaRepositorio.gravarPessoa(pessoa2);
         
-        Pessoa pessoaRecuperada = pessoaRepositorio.buscar("AL1");
+        Pessoa pessoaRecuperada = pessoaRepositorio.buscar("AL0");
         
         if(pessoaRecuperada != null)
             System.out.println(pessoaRecuperada);

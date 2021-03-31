@@ -1,12 +1,13 @@
 package algunsTestes;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import disciplinas.Disciplina;
-import pessoas.Aluno;
-import pessoas.Pessoa;
-import sistema.Sistema;
+//import java.util.HashSet;
+//import java.util.Set;
+//
+//import controller.DisciplinaController;
+import dao.PessoaDAO;
+import model.Aluno;
+import model.Disciplina;
+import model.Pessoa;
 
 public class conjunto {
 	
@@ -23,31 +24,41 @@ public class conjunto {
 		portugues.setAluno((Aluno)aluno2);
 		matematica.setAluno((Aluno)aluno3);
 		
-		Sistema sis = new Sistema();
-		sis.setPessoas(aluno1);
-		sis.setPessoas(aluno2);
-		sis.setPessoas(aluno3);
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		pessoaDAO.gravarPessoa(aluno1);
+		pessoaDAO.gravarPessoa(aluno2);
+		pessoaDAO.gravarPessoa(aluno3);
 		
-		System.out.println("\n---------Todos os alunos criados------------\n");
+//		System.out.println("\n---------Todos os alunos criados------------\n");
+//
+//		for(Pessoa p: pessoaDAO.getAlunos()) {
+//			System.out.println(p);
+//		}
+//		
+//		System.out.println("\n---------Todos os alunos matriculados em matemática------------\n");
+//
+//		for(Aluno a : matematica.getListaDeAlunos()) {
+//			System.out.println(a);
+//		}
+//		
+//		System.out.println("\n---------Todos os alunos matriculados em matemática após uso do Set------------\n");
+//		
+//		Set<Pessoa> aluno = new HashSet<>();
+//        aluno.addAll(matematica.getListaDeAlunos());
+//        for(Pessoa al : aluno) {
+//        	System.out.println(al);
+//        }
+//        System.out.println("\n");
+//        System.out.println(matematica.toString());
+//        System.out.println(portugues.toString());
 		
-		sis.imprimirAlunos();
+		pessoaDAO.gravarDiciplina(portugues);
+		pessoaDAO.gravarDiciplina(matematica);
 		
-		System.out.println("\n---------Todos os alunos matriculados em matemática------------\n");
-
-		for(Aluno a : matematica.getListaDeAlunos()) {
-			System.out.println(a);
+		for(Disciplina d : pessoaDAO.buscarTodasDisciplinas()) {
+			System.out.println(d);
 		}
 		
-		System.out.println("\n---------Todos os alunos matriculados em matemática após uso do Set------------\n");
-		
-		Set<Pessoa> aluno = new HashSet<>();
-        aluno.addAll(matematica.getListaDeAlunos());
-        for(Pessoa al : aluno) {
-        	System.out.println(al);
-        }
-        System.out.println("\n");
-        System.out.println(matematica.toString());
-        System.out.println(portugues.toString());
 	}
 
 }
